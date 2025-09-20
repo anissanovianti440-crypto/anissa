@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elemen Selector</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: grey;
+            font-family: sans-serif;
+        }
+        #main-container {
+            width: 80%;
+            background-color: white;
+            padding: 15px;
+            margin: auto;
+        }
+        #main-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #table-container {
+            width: 80%;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        td, th {
+            border: 1px solid black;
+            padding: 5px;
+        }
+        table td:first-child {
+            text-align: center;
+        }
+        table td:last-child {
+            text-align: right;
+        }
+        button {
+            padding: 5px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="main-container">
+        <h2>List Stok Barang</h2>
+        <div id="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Product</th>
+                        <th>Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Sepatu Trail Running</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jas Wind Breaker</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Water Bladder</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button>Change to Colorfull</button>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            colorLess();
+
+            $("button").click(function () {
+                var textButton = $("button").text();
+                if (textButton === "Change to Colorfull") {
+                    $(this).text("Change to Colorless");
+                    colorFull();
+                } else {
+                    $(this).text("Change to Colorfull");
+                    colorLess();
+                }
+            });
+
+            function colorLess() {
+                $("thead").css("background", "black");
+                $("thead").css("color", "white");
+                $("tbody tr:even").css("background", "#CCCCCC");
+                $("tbody tr:even").css("color", "black");
+                $("tbody tr:nth-child(2)").css("background", "white");
+                $("tbody tr:nth-child(2)").css("color", "black");
+                $("button").css("background", "#CCCCCC");
+                $("button").css("color", "black");
+            }
+
+            function colorFull() {
+                $("thead").css("background", "red");
+                $("thead").css("color", "white");
+                $("tbody tr:even").css("background", "blue");
+                $("tbody tr:even").css("color", "white");
+                $("tbody tr:nth-child(2)").css("background", "yellow");
+                $("tbody tr:nth-child(2)").css("color", "black");
+                $("button").css("background", "red");
+                $("button").css("color", "white");
+            }
+        });
+    </script>
+</body>
+</html>
